@@ -41,22 +41,6 @@
   }
   .shot img { width: 200%; margin-left: -100%; display: block; }
 
-  .ring {
-    position: absolute; border: 3px solid #e8a33d; border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 0 3px rgba(232,163,61,.25), 0 0 22px rgba(232,163,61,.35);
-  }
-  .arrow { position: absolute; width: 11%; transform: translate(-50%, -50%); }
-  .arrow svg { display: block; width: 100%; }
-  .arrow.flip svg { transform: scaleX(-1); }
-  .steplab {
-    position: absolute; transform: translate(-50%, -50%);
-    background: #e8a33d; color: #1b1815; font-size: 13px; font-weight: 700;
-    letter-spacing: .08em; text-transform: uppercase;
-    padding: 6px 11px; border-radius: 99px; white-space: nowrap;
-    box-shadow: 0 4px 14px rgba(0,0,0,.4);
-  }
-
   /* The bar, as it appears on claude.ai. */
   .barmock {
     margin-top: 26px; border-radius: 14px; border: 1px solid #3a332c;
@@ -100,31 +84,11 @@
 
     <section class="step">
       <div class="shot">
-        <img src="pin.png" alt="Chrome toolbar with the Extensions menu open: click the puzzle icon, then the pin next to Token Counter" width="1294" height="614">
-        <span class="ring" style="left: 87%; top: 9.5%; width: 8%; aspect-ratio: 1;"></span>
-        <span class="arrow" style="left: 61%; top: 11.5%; width: 14%;">
-          <svg viewBox="0 0 100 40" fill="none">
-            <path d="M4 32 C 30 14, 58 8, 86 12" stroke="#e8a33d" stroke-width="7" stroke-linecap="round"/>
-            <path d="M76 2 L90 11 L77 22" stroke="#e8a33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="steplab" style="left: 45%; top: 12%;">Step 1</span>
-
-        <span class="ring" style="left: 76%; top: 58%; width: 7%; aspect-ratio: 1;"></span>
-        <span class="arrow flip" style="left: 86.5%; top: 69%;">
-          <svg viewBox="0 0 100 62" fill="none">
-            <path d="M6 54 C 28 24, 52 12, 80 14" stroke="#e8a33d" stroke-width="8" stroke-linecap="round"/>
-            <path d="M70 3 L86 13 L72 27" stroke="#e8a33d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="steplab" style="left: 90%; top: 81%;">Step 2</span>
+        <img src="step-1-2-install.png" alt="Chrome toolbar with the Extensions menu open: 1 — click the puzzle icon, 2 — click the pin next to Token Counter" width="1470" height="590">
       </div>
     </section>
 
     <section class="step">
-      <h2>The bar appears under the message box</h2>
-      <p>No setup needed. Open any chat on claude.ai and watch your current session, weekly
-         limit, model and effort update as you work. It turns red when you get close to a limit.</p>
       <div class="barmock">
         <div class="bbar">
           <span class="blab">current session</span>
@@ -148,15 +112,7 @@
       <p>The popup shows your session gauge, weekly limits per model, reset timer and settings.
          Everything comes from Claude's own usage data — the extension sends nothing anywhere else.</p>
       <div class="shot">
-        <img src="popup.png" alt="Token Counter popup opened by clicking the pinned toolbar icon" width="1293" height="762">
-        <span class="ring" style="left: 81.4%; top: 9%; width: 9%; aspect-ratio: 1;"></span>
-        <span class="arrow" style="left: 63%; top: 9.5%; width: 14%;">
-          <svg viewBox="0 0 100 40" fill="none">
-            <path d="M4 32 C 30 14, 58 8, 86 12" stroke="#e8a33d" stroke-width="7" stroke-linecap="round"/>
-            <path d="M76 2 L90 11 L77 22" stroke="#e8a33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="steplab" style="left: 47%; top: 10%;">Step 3</span>
+        <img src="step-3-pinned.png" alt="Token Counter popup opened by clicking the pinned toolbar icon (step 3)" width="1470" height="798">
       </div>
     </section>
 
