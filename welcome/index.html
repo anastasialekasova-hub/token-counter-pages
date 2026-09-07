@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Counter is installed</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap">
+<!-- Paste your Google Analytics tag here -->
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: #1b1815; color: #f2ece2;
+    font: 17px/1.55 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    font-synthesis: none;
+  }
+  .shell { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 56px; }
+  .mark { position: relative; width: 40px; height: 40px; border-radius: 22%; background: #2a251f; flex: 0 0 auto; }
+  .mark i { position: absolute; top: 29%; bottom: 29%; width: 6.2%; border-radius: 99px; background: #e8a33d; }
+  .mark i:nth-child(1) { left: 30%; }
+  .mark i:nth-child(2) { left: 41.5%; }
+  .mark i:nth-child(3) { left: 53%; }
+  .mark i:nth-child(4) { left: 64.5%; }
+  .mark i:nth-child(5) { left: 47%; top: 22%; bottom: 22%; transform: rotate(64deg); }
+  .brand b { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+
+  h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
+  .lede { margin-top: 16px; font-size: 19px; color: #b3a996; max-width: 56ch; }
+
+  .step { margin-top: 64px; }
+  .step-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #e8a33d;
+  }
+  .step-tag i {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #e8a33d; color: #1b1815; font-style: normal;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 13px;
+  }
+  .step h2 { margin-top: 10px; font-size: 26px; letter-spacing: -0.01em; }
+  .step p { margin-top: 8px; color: #b3a996; max-width: 58ch; }
+
+  /* Chrome-toolbar mock: where the puzzle icon and the pin live. */
+  .browser {
+    margin-top: 26px; border-radius: 14px; overflow: hidden;
+    border: 1px solid #3a332c; background: #262220;
+    box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  }
+  .toolbar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #2e2925; }
+  .toolbar .dots { display: flex; gap: 6px; }
+  .toolbar .dots s { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .toolbar .dots s:nth-child(1) { background: #f2555a; }
+  .toolbar .dots s:nth-child(2) { background: #f0b542; }
+  .toolbar .dots s:nth-child(3) { background: #55c261; }
+  .toolbar .url { flex: 1; height: 34px; border-radius: 17px; background: #262220; color: #8f867a; display: flex; align-items: center; padding: 0 16px; font-size: 14px; }
+  .puzzle {
+    width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    outline: 3px solid #e8a33d; background: #3a332c; font-size: 16px;
+  }
+  .drop { padding: 18px 20px 8px; max-width: 340px; margin-left: auto; }
+  .drop h3 { font-size: 15px; margin-bottom: 12px; }
+  .ext-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 10px; background: #2e2925;
+  }
+  .ext-row .mark { width: 26px; height: 26px; }
+  .ext-row span { flex: 1; font-size: 15px; font-weight: 600; }
+  .pin {
+    width: 30px; height: 30px; border-radius: 50%; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    outline: 3px solid #e8a33d; background: #3a332c; font-size: 14px;
+  }
+  .drop .note { font-size: 13px; color: #8f867a; padding: 10px 2px 8px; }
+
+  /* The bar, as it appears on claude.ai. */
+  .barmock {
+    margin-top: 26px; border-radius: 14px; border: 1px solid #3a332c;
+    background: #262220; padding: 22px; box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  }
+  .bbar {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    min-height: 40px; padding: 8px 12px;
+    border: 1px solid #4a423a; border-radius: 12px;
+    background: rgba(56,49,43,.9); font-size: 14px; line-height: 1;
+  }
+  .blab { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: #a99e8e; white-space: nowrap; }
+  .bmeter { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
+  .bmeter b { width: 4px; height: 10px; border-radius: 1.5px; background: #4c443b; }
+  .bmeter b.on { background: #e8a33d; height: 15px; }
+  .bpct { font-weight: 600; }
+  .bdot { color: #a99e8e; }
+  .bval { font-weight: 600; }
+  .composer { margin-top: 12px; height: 52px; border-radius: 13px; border: 1px solid #453e37; background: #2e2925; display: flex; align-items: center; padding: 0 18px; color: #8f867a; font-size: 16px; }
+
+  .cta {
+    display: inline-block; margin-top: 22px; padding: 13px 22px; border-radius: 11px;
+    background: #e8a33d; color: #1b1815; font-weight: 700; text-decoration: none; font-size: 16px;
+  }
+  .cta:hover { background: #f0b254; }
+
+  footer { margin-top: 84px; padding-top: 24px; border-top: 1px solid #3a332c; font-size: 14px; color: #8f867a; }
+  footer a { color: #b3a996; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="brand">
+      <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
+      <b>Token Counter</b>
+    </div>
+
+    <h1>🎉 Installed. One click and it's always in sight.</h1>
+    <p class="lede">Token Counter shows your Claude session and weekly limits live, right under
+       the chat. Chrome hides new extensions behind the puzzle icon — pin it first.</p>
+
+    <section class="step">
+      <span class="step-tag"><i>1</i> Pin the extension</span>
+      <h2>Click the puzzle piece, then the pin</h2>
+      <p>The puzzle icon sits to the right of the address bar. Find <b>Token Counter</b> in the
+         list and click the pin — the icon stays on your toolbar and shows your session usage
+         as a badge.</p>
+      <div class="browser">
+        <div class="toolbar">
+          <span class="dots"><s></s><s></s><s></s></span>
+          <span class="url">claude.ai</span>
+          <span class="puzzle">🧩</span>
+        </div>
+        <div class="drop">
+          <h3>Extensions</h3>
+          <div class="ext-row">
+            <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
+            <span>Token Counter</span>
+            <span class="pin">📌</span>
+          </div>
+          <p class="note">Pinned extensions stay next to the address bar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="step">
+      <span class="step-tag"><i>2</i> Open Claude</span>
+      <h2>The bar appears under the message box</h2>
+      <p>No setup needed. Open any chat on claude.ai and watch your current session, weekly
+         limit, model and effort update as you work. It turns red when you get close to a limit.</p>
+      <div class="barmock">
+        <div class="bbar">
+          <span class="blab">current session</span>
+          <span class="bmeter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span>
+          <span class="bpct">26%</span>
+          <span class="bdot">·</span>
+          <span class="blab">weekly limit</span>
+          <span class="bpct">3%</span>
+          <span class="bdot">·</span>
+          <span class="bval">Fable</span>
+          <span class="bdot">·</span>
+          <span class="blab">effort</span>
+          <span class="bval">High</span>
+        </div>
+        <div class="composer">Write a message…</div>
+      </div>
+      <a class="cta" href="https://claude.ai" target="_blank" rel="noopener">Open claude.ai →</a>
+    </section>
+
+    <section class="step">
+      <span class="step-tag"><i>3</i> One more thing</span>
+      <h2>Click the icon for the full picture</h2>
+      <p>The popup shows your session gauge, weekly limits per model (on Max plans), reset
+         timers and settings. Everything comes from Claude's own usage data — the extension
+         sends nothing anywhere else.</p>
+    </section>
+
+    <footer>
+      Questions or a bug? <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.
+    </footer>
+  </div>
+</body>
+</html>
