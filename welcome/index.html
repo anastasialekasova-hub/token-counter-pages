@@ -14,9 +14,9 @@
     font: 17px/1.55 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
     font-synthesis: none;
   }
-  .shell { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+  .shell { max-width: 780px; margin: 0 auto; padding: 64px 24px 96px; }
 
-  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 56px; }
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 48px; }
   .mark { position: relative; width: 40px; height: 40px; border-radius: 22%; background: #2a251f; flex: 0 0 auto; }
   .mark i { position: absolute; top: 29%; bottom: 29%; width: 6.2%; border-radius: 99px; background: #e8a33d; }
   .mark i:nth-child(1) { left: 30%; }
@@ -26,54 +26,36 @@
   .mark i:nth-child(5) { left: 47%; top: 22%; bottom: 22%; transform: rotate(64deg); }
   .brand b { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 
-  h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
-  .lede { margin-top: 16px; font-size: 19px; color: #b3a996; max-width: 56ch; }
+  h1 { font-size: 40px; line-height: 1.14; letter-spacing: -0.02em; text-wrap: balance; }
+  h1 em { font-style: normal; color: #e8a33d; }
+  .lede { margin-top: 18px; font-size: 21px; color: #b3a996; max-width: 56ch; }
 
-  .step { margin-top: 64px; }
-  .step-tag {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #e8a33d;
-  }
-  .step-tag i {
-    width: 24px; height: 24px; border-radius: 50%;
-    background: #e8a33d; color: #1b1815; font-style: normal;
-    display: inline-flex; align-items: center; justify-content: center; font-size: 13px;
-  }
-  .step h2 { margin-top: 10px; font-size: 26px; letter-spacing: -0.01em; }
-  .step p { margin-top: 8px; color: #b3a996; max-width: 58ch; }
+  .step { margin-top: 56px; }
+  .step h2 { font-size: 24px; letter-spacing: -0.01em; }
+  .step > p { margin-top: 8px; color: #b3a996; max-width: 58ch; }
 
-  /* Chrome-toolbar mock: where the puzzle icon and the pin live. */
-  .browser {
-    margin-top: 26px; border-radius: 14px; overflow: hidden;
-    border: 1px solid #3a332c; background: #262220;
-    box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  /* Annotated screenshot: the right half is where everything happens. */
+  .shot {
+    position: relative; margin-top: 26px; border-radius: 14px; overflow: hidden;
+    border: 1px solid #3a332c; box-shadow: 0 18px 50px rgba(0,0,0,.4); background: #262220;
   }
-  .toolbar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #2e2925; }
-  .toolbar .dots { display: flex; gap: 6px; }
-  .toolbar .dots s { width: 11px; height: 11px; border-radius: 50%; display: block; }
-  .toolbar .dots s:nth-child(1) { background: #f2555a; }
-  .toolbar .dots s:nth-child(2) { background: #f0b542; }
-  .toolbar .dots s:nth-child(3) { background: #55c261; }
-  .toolbar .url { flex: 1; height: 34px; border-radius: 17px; background: #262220; color: #8f867a; display: flex; align-items: center; padding: 0 16px; font-size: 14px; }
-  .puzzle {
-    width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
-    display: flex; align-items: center; justify-content: center;
-    outline: 3px solid #e8a33d; background: #3a332c; font-size: 16px;
+  .shot img { width: 200%; margin-left: -100%; display: block; }
+
+  .ring {
+    position: absolute; border: 3px solid #e8a33d; border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 3px rgba(232,163,61,.25), 0 0 22px rgba(232,163,61,.35);
   }
-  .drop { padding: 18px 20px 8px; max-width: 340px; margin-left: auto; }
-  .drop h3 { font-size: 15px; margin-bottom: 12px; }
-  .ext-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 10px 12px; border-radius: 10px; background: #2e2925;
+  .arrow { position: absolute; width: 11%; transform: translate(-50%, -50%); }
+  .arrow svg { display: block; width: 100%; }
+  .arrow.flip svg { transform: scaleX(-1); }
+  .steplab {
+    position: absolute; transform: translate(-50%, -50%);
+    background: #e8a33d; color: #1b1815; font-size: 13px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 6px 11px; border-radius: 99px; white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0,0,0,.4);
   }
-  .ext-row .mark { width: 26px; height: 26px; }
-  .ext-row span { flex: 1; font-size: 15px; font-weight: 600; }
-  .pin {
-    width: 30px; height: 30px; border-radius: 50%; flex: 0 0 auto;
-    display: flex; align-items: center; justify-content: center;
-    outline: 3px solid #e8a33d; background: #3a332c; font-size: 14px;
-  }
-  .drop .note { font-size: 13px; color: #8f867a; padding: 10px 2px 8px; }
 
   /* The bar, as it appears on claude.ai. */
   .barmock {
@@ -95,13 +77,14 @@
   .bval { font-weight: 600; }
   .composer { margin-top: 12px; height: 52px; border-radius: 13px; border: 1px solid #453e37; background: #2e2925; display: flex; align-items: center; padding: 0 18px; color: #8f867a; font-size: 16px; }
 
+  .cta-block { margin-top: 72px; text-align: center; }
   .cta {
-    display: inline-block; margin-top: 22px; padding: 13px 22px; border-radius: 11px;
-    background: #e8a33d; color: #1b1815; font-weight: 700; text-decoration: none; font-size: 16px;
+    display: inline-block; padding: 16px 30px; border-radius: 13px;
+    background: #e8a33d; color: #1b1815; font-weight: 700; text-decoration: none; font-size: 19px;
   }
   .cta:hover { background: #f0b254; }
 
-  footer { margin-top: 84px; padding-top: 24px; border-top: 1px solid #3a332c; font-size: 14px; color: #8f867a; }
+  footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid #3a332c; font-size: 14px; color: #8f867a; }
   footer a { color: #b3a996; }
 </style>
 </head>
@@ -112,36 +95,33 @@
       <b>Token Counter</b>
     </div>
 
-    <h1>🎉 Installed. One click and it's always in sight.</h1>
-    <p class="lede">Token Counter shows your Claude session and weekly limits live, right under
-       the chat. Chrome hides new extensions behind the puzzle icon — pin it first.</p>
+    <h1>Token Counter shows your Claude session and weekly limits — <em>live</em>, right under the chat.</h1>
+    <p class="lede">Chrome hides new extensions behind the puzzle icon — pin it first.</p>
 
     <section class="step">
-      <span class="step-tag"><i>1</i> Pin the extension</span>
-      <h2>Click the puzzle piece, then the pin</h2>
-      <p>The puzzle icon sits to the right of the address bar. Find <b>Token Counter</b> in the
-         list and click the pin — the icon stays on your toolbar and shows your session usage
-         as a badge.</p>
-      <div class="browser">
-        <div class="toolbar">
-          <span class="dots"><s></s><s></s><s></s></span>
-          <span class="url">claude.ai</span>
-          <span class="puzzle">🧩</span>
-        </div>
-        <div class="drop">
-          <h3>Extensions</h3>
-          <div class="ext-row">
-            <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
-            <span>Token Counter</span>
-            <span class="pin">📌</span>
-          </div>
-          <p class="note">Pinned extensions stay next to the address bar.</p>
-        </div>
+      <div class="shot">
+        <img src="pin.png" alt="Chrome toolbar with the Extensions menu open: click the puzzle icon, then the pin next to Token Counter" width="1294" height="614">
+        <span class="ring" style="left: 87%; top: 9.5%; width: 8%; aspect-ratio: 1;"></span>
+        <span class="arrow" style="left: 61%; top: 11.5%; width: 14%;">
+          <svg viewBox="0 0 100 40" fill="none">
+            <path d="M4 32 C 30 14, 58 8, 86 12" stroke="#e8a33d" stroke-width="7" stroke-linecap="round"/>
+            <path d="M76 2 L90 11 L77 22" stroke="#e8a33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="steplab" style="left: 45%; top: 12%;">Step 1</span>
+
+        <span class="ring" style="left: 76%; top: 58%; width: 7%; aspect-ratio: 1;"></span>
+        <span class="arrow flip" style="left: 86.5%; top: 69%;">
+          <svg viewBox="0 0 100 62" fill="none">
+            <path d="M6 54 C 28 24, 52 12, 80 14" stroke="#e8a33d" stroke-width="8" stroke-linecap="round"/>
+            <path d="M70 3 L86 13 L72 27" stroke="#e8a33d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="steplab" style="left: 90%; top: 81%;">Step 2</span>
       </div>
     </section>
 
     <section class="step">
-      <span class="step-tag"><i>2</i> Open Claude</span>
       <h2>The bar appears under the message box</h2>
       <p>No setup needed. Open any chat on claude.ai and watch your current session, weekly
          limit, model and effort update as you work. It turns red when you get close to a limit.</p>
@@ -161,16 +141,28 @@
         </div>
         <div class="composer">Write a message…</div>
       </div>
-      <a class="cta" href="https://claude.ai" target="_blank" rel="noopener">Open claude.ai →</a>
     </section>
 
     <section class="step">
-      <span class="step-tag"><i>3</i> One more thing</span>
       <h2>Click the icon for the full picture</h2>
-      <p>The popup shows your session gauge, weekly limits per model (on Max plans), reset
-         timers and settings. Everything comes from Claude's own usage data — the extension
-         sends nothing anywhere else.</p>
+      <p>The popup shows your session gauge, weekly limits per model, reset timer and settings.
+         Everything comes from Claude's own usage data — the extension sends nothing anywhere else.</p>
+      <div class="shot">
+        <img src="popup.png" alt="Token Counter popup opened by clicking the pinned toolbar icon" width="1293" height="762">
+        <span class="ring" style="left: 81.4%; top: 9%; width: 9%; aspect-ratio: 1;"></span>
+        <span class="arrow" style="left: 63%; top: 9.5%; width: 14%;">
+          <svg viewBox="0 0 100 40" fill="none">
+            <path d="M4 32 C 30 14, 58 8, 86 12" stroke="#e8a33d" stroke-width="7" stroke-linecap="round"/>
+            <path d="M76 2 L90 11 L77 22" stroke="#e8a33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="steplab" style="left: 47%; top: 10%;">Step 3</span>
+      </div>
     </section>
+
+    <div class="cta-block">
+      <a class="cta" href="https://claude.ai" target="_blank" rel="noopener">Open claude.ai →</a>
+    </div>
 
     <footer>
       Questions or a bug? <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.
