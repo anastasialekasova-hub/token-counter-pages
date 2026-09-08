@@ -14,8 +14,9 @@
     font: 17px/1.55 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
     font-synthesis: none;
   }
-  .shell { max-width: 620px; margin: 0 auto; padding: 96px 24px; }
-  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 48px; }
+  .shell { max-width: 640px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 36px; }
   .mark { position: relative; width: 40px; height: 40px; border-radius: 22%; background: #2a251f; flex: 0 0 auto; }
   .mark i { position: absolute; top: 29%; bottom: 29%; width: 6.2%; border-radius: 99px; background: #e8a33d; }
   .mark i:nth-child(1) { left: 30%; }
@@ -24,15 +25,55 @@
   .mark i:nth-child(4) { left: 64.5%; }
   .mark i:nth-child(5) { left: 47%; top: 22%; bottom: 22%; transform: rotate(64deg); }
   .brand b { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-  h1 { font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
-  p { margin-top: 16px; color: #b3a996; max-width: 52ch; }
-  a { color: #e8a33d; }
-  .box {
-    margin-top: 36px; padding: 22px 24px; border: 1px solid #3a332c;
-    border-radius: 14px; background: #262220;
+
+  h1 { font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+  .lede { margin-top: 12px; color: #b3a996; max-width: 52ch; }
+
+  form { margin-top: 34px; }
+  .q { font-size: 14px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #e8a33d; }
+
+  .options { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .opt {
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid #3a332c; border-radius: 12px; background: #262220;
+    padding: 14px 16px; cursor: pointer; font-size: 16.5px;
+    transition: border-color .15s ease, background .15s ease;
   }
-  .box h2 { font-size: 18px; }
-  .box p { margin-top: 8px; font-size: 15px; }
+  .opt:hover { border-color: #5a5148; }
+  .opt input { position: absolute; opacity: 0; }
+  .opt .dot {
+    width: 20px; height: 20px; border-radius: 50%; flex: 0 0 auto;
+    border: 2px solid #5a5148; transition: border-color .15s ease;
+  }
+  .opt:has(input:checked) { border-color: #e8a33d; background: #2c2620; }
+  .opt:has(input:checked) .dot { border-color: #e8a33d; border-width: 6px; }
+  .opt:has(input:focus-visible) { outline: 2px solid #e8a33d; outline-offset: 2px; }
+
+  .q2 { margin-top: 28px; }
+  textarea {
+    margin-top: 14px; width: 100%; min-height: 96px; resize: vertical;
+    border: 1px solid #3a332c; border-radius: 12px; background: #262220;
+    color: #f2ece2; padding: 13px 16px; font: inherit; font-size: 16px;
+  }
+  textarea::placeholder { color: #8f867a; }
+  textarea:focus-visible { outline: 2px solid #e8a33d; outline-offset: 1px; border-color: #e8a33d; }
+
+  .send {
+    margin-top: 24px; padding: 14px 28px; border: 0; border-radius: 12px;
+    background: #e8a33d; color: #1b1815; font: inherit; font-size: 17px; font-weight: 700;
+    cursor: pointer;
+  }
+  .send:hover { background: #f0b254; }
+  .send:disabled { opacity: .5; cursor: default; }
+
+  .note { margin-top: 28px; font-size: 14px; color: #8f867a; max-width: 56ch; }
+  .note a { color: #b3a996; }
+
+  .thanks { display: none; margin-top: 40px; }
+  .thanks h2 { font-size: 26px; letter-spacing: -0.01em; }
+  .thanks p { margin-top: 10px; color: #b3a996; max-width: 52ch; }
+  body[data-sent="true"] form { display: none; }
+  body[data-sent="true"] .thanks { display: block; }
 </style>
 </head>
 <body>
@@ -41,15 +82,57 @@
       <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
       <b>Token Counter</b>
     </div>
-    <h1>Token Counter was removed.</h1>
-    <p>All data the extension kept lived in your browser and is gone with it. Nothing was
-       ever sent anywhere else.</p>
-    <div class="box">
-      <h2>Two minutes to make it better?</h2>
-      <p>If something didn't work or got in the way, tell us —
-         <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">open an issue on GitHub</a>.
-         Real reports from real setups are how the bar gets fixed.</p>
+
+    <h1>Token Counter was removed. Thanks for giving it a try.</h1>
+    <p class="lede">One quick question before you go — it genuinely shapes what gets fixed next.</p>
+
+    <form id="feedback">
+      <div class="q">Why did you remove it?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="reason" value="It didn't show my usage correctly"><span class="dot"></span>It didn't show my usage correctly</label>
+        <label class="opt"><input type="radio" name="reason" value="Too distracting"><span class="dot"></span>Too distracting</label>
+        <label class="opt"><input type="radio" name="reason" value="I expected something different"><span class="dot"></span>I expected something different</label>
+        <label class="opt"><input type="radio" name="reason" value="Just cleaning up / don't need it anymore"><span class="dot"></span>Just cleaning up / don't need it anymore</label>
+      </div>
+
+      <div class="q q2">Anything else?</div>
+      <textarea name="details" placeholder="Optional — what happened, or what you expected…"></textarea>
+
+      <button class="send" type="submit">Send feedback</button>
+    </form>
+
+    <div class="thanks">
+      <h2>Thank you. Every answer counts.</h2>
+      <p>All data the extension kept lived in your browser and was deleted with it —
+         nothing was ever sent anywhere else.</p>
     </div>
+
+    <p class="note">All data the extension kept lived in your browser and was deleted with it.
+       Prefer a conversation? <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.</p>
   </div>
+
+<script>
+  // Responses land in a Google Form (and its linked Google Sheet).
+  // Fill these in from the form's pre-filled link; empty = submit is a no-op
+  // that still shows the thank-you state.
+  var FORM_ID = '';        // the long id from .../forms/d/e/<FORM_ID>/viewform
+  var ENTRY_REASON = '';   // e.g. 'entry.1234567890'
+  var ENTRY_DETAILS = '';  // e.g. 'entry.0987654321'
+
+  document.getElementById('feedback').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var reason = (document.querySelector('input[name="reason"]:checked') || {}).value || '';
+    var details = document.querySelector('textarea[name="details"]').value.trim();
+
+    if (FORM_ID && (reason || details)) {
+      var data = new FormData();
+      if (ENTRY_REASON && reason) data.append(ENTRY_REASON, reason);
+      if (ENTRY_DETAILS && details) data.append(ENTRY_DETAILS, details);
+      fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse',
+        { method: 'POST', mode: 'no-cors', body: data }).catch(function () {});
+    }
+    document.body.dataset.sent = 'true';
+  });
+</script>
 </body>
 </html>
