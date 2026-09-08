@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Counter Privacy Policy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: #1b1815; color: #f2ece2;
+    font: 17px/1.6 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    font-synthesis: none;
+  }
+  .shell { max-width: 680px; margin: 0 auto; padding: 56px 24px 96px; }
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 40px; }
+  .mark { position: relative; width: 40px; height: 40px; border-radius: 22%; background: #2a251f; flex: 0 0 auto; }
+  .mark i { position: absolute; top: 29%; bottom: 29%; width: 6.2%; border-radius: 99px; background: #e8a33d; }
+  .mark i:nth-child(1) { left: 30%; }
+  .mark i:nth-child(2) { left: 41.5%; }
+  .mark i:nth-child(3) { left: 53%; }
+  .mark i:nth-child(4) { left: 64.5%; }
+  .mark i:nth-child(5) { left: 47%; top: 22%; bottom: 22%; transform: rotate(64deg); }
+  .brand b { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { font-size: 32px; letter-spacing: -0.02em; line-height: 1.15; }
+  .updated { margin-top: 8px; font-size: 14px; color: #8f867a; }
+  h2 { margin-top: 36px; font-size: 20px; letter-spacing: -0.01em; }
+  p, li { margin-top: 10px; color: #cfc7b8; }
+  ul { margin-top: 10px; padding-left: 22px; }
+  strong { color: #f2ece2; }
+  a { color: #e8a33d; }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #3a332c; font-size: 14px; color: #8f867a; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="brand">
+      <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
+      <b>Token Counter</b>
+    </div>
+
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: September 8, 2026</p>
+
+    <p>Token Counter is a browser extension that shows your Claude usage limits.
+       This policy describes exactly what it does with data — which is very little.</p>
+
+    <h2>What the extension collects</h2>
+    <p><strong>Nothing.</strong> The extension does not collect, store on any server, sell or
+       share any personal data, browsing history, conversation content or usage statistics.
+       It has no accounts, no tracking and no third-party analytics inside the extension.</p>
+
+    <h2>What stays in your browser</h2>
+    <p>The extension keeps a small amount of data in your browser's local extension storage
+       (<code>chrome.storage.local</code>): your settings (plan, whether the bar is shown) and a
+       short local log used only as a fallback estimate. This data never leaves your device and
+       is deleted automatically when you remove the extension.</p>
+
+    <h2>Network requests</h2>
+    <p>The extension talks to exactly one site: <strong>claude.ai</strong>. It reads the same
+       usage endpoint that Claude's own settings page uses, authenticated by your existing
+       claude.ai session, to display your official session and weekly limit percentages.
+       No request is ever sent to any other server, and nothing about you is transmitted
+       to the extension's developer.</p>
+
+    <h2>Pages the extension opens</h2>
+    <ul>
+      <li>After installation it opens a one-time <strong>welcome page</strong>, and after removal
+          your browser opens a <strong>feedback page</strong> — both are ordinary web pages hosted
+          on GitHub Pages. They may use standard, anonymous web analytics.</li>
+      <li>Feedback you choose to submit on the removal page (a reason and an optional comment)
+          is sent to the developer via Google Forms. Submitting it is entirely optional and it
+          contains only what you type — no identifiers are attached by the page.</li>
+    </ul>
+
+    <h2>Permissions, explained</h2>
+    <ul>
+      <li><strong>storage</strong> — to remember your settings locally.</li>
+      <li><strong>Access to claude.ai</strong> — to read your usage limits and show the bar
+          under the chat. The extension runs only on claude.ai and nowhere else.</li>
+    </ul>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the updated version will be published at this address with a new
+       date above.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.</p>
+
+    <footer>Token Counter is an independent tool and is not affiliated with Anthropic.</footer>
+  </div>
+</body>
+</html>
