@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Counter feedback</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: #1b1815; color: #f2ece2;
+    font: 17px/1.55 "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    font-synthesis: none;
+  }
+  .shell { max-width: 640px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 36px; }
+  .mark { position: relative; width: 40px; height: 40px; border-radius: 22%; background: #2a251f; flex: 0 0 auto; }
+  .mark i { position: absolute; top: 29%; bottom: 29%; width: 6.2%; border-radius: 99px; background: #e8a33d; }
+  .mark i:nth-child(1) { left: 30%; }
+  .mark i:nth-child(2) { left: 41.5%; }
+  .mark i:nth-child(3) { left: 53%; }
+  .mark i:nth-child(4) { left: 64.5%; }
+  .mark i:nth-child(5) { left: 47%; top: 22%; bottom: 22%; transform: rotate(64deg); }
+  .brand b { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+
+  .intro h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+  .intro p { margin-top: 12px; color: #b3a996; max-width: 52ch; text-wrap: pretty; }
+
+  form { margin-top: 36px; }
+  .q { display: block; font-size: 14px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #e8a33d; }
+
+  .options { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .opt {
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid #3a332c; border-radius: 12px; background: #262220;
+    padding: 14px 16px; cursor: pointer; font-size: 16.5px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .opt:hover { border-color: #5a5148; }
+  .opt input { position: absolute; opacity: 0; }
+  .opt .dot {
+    width: 20px; height: 20px; border-radius: 50%; flex: 0 0 auto;
+    border: 2px solid #5a5148; transition: border-color .15s ease;
+  }
+  .opt:has(input:checked) { border-color: #e8a33d; background: #2c2620; }
+  .opt:has(input:checked) .dot { border-color: #e8a33d; border-width: 6px; }
+  .opt:has(input:focus-visible) { outline: 2px solid #e8a33d; outline-offset: 2px; }
+
+  .q2 { margin-top: 28px; }
+  textarea, .field {
+    display: block; margin-top: 14px; width: 100%;
+    border: 1px solid #3a332c; border-radius: 12px; background: #262220;
+    color: #f2ece2; padding: 13px 16px; font: inherit; font-size: 16px;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  textarea::placeholder, .field::placeholder { color: #8f867a; }
+  textarea:focus-visible, .field:focus-visible { outline: 2px solid #e8a33d; outline-offset: 1px; border-color: #e8a33d; }
+  .hint { margin-top: 8px; font-size: 14px; color: #8f867a; }
+
+  .send {
+    margin-top: 24px; padding: 14px 28px; border: 0; border-radius: 12px;
+    background: #e8a33d; color: #1b1815; font: inherit; font-size: 17px; font-weight: 700;
+    cursor: pointer;
+  }
+  .send:hover { background: #f0b254; }
+  .send:disabled { opacity: .5; cursor: default; }
+
+  .note { margin-top: 28px; font-size: 14px; color: #8f867a; max-width: 56ch; }
+  .note a { color: #b3a996; }
+
+  .thanks { display: none; }
+  .thanks h2 { font-size: 26px; letter-spacing: -0.01em; }
+  .thanks p { margin-top: 10px; color: #b3a996; max-width: 52ch; }
+  body[data-sent="true"] .intro,
+  body[data-sent="true"] form { display: none; }
+  body[data-sent="true"] .thanks { display: block; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="brand">
+      <span class="mark"><i></i><i></i><i></i><i></i><i></i></span>
+      <b>Token Counter</b>
+    </div>
+
+    <div class="intro">
+      <h1>Help us improve Token Counter</h1>
+      <p>Thanks for the honest rating. Tell us what gets in the way — it takes half a minute.</p>
+    </div>
+
+    <form id="feedback">
+      <div class="q">What's not working?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="reason" value="It counts wrong"><span class="dot"></span>It counts wrong</label>
+        <label class="opt"><input type="radio" name="reason" value="It doesn't appear on claude.ai"><span class="dot"></span>It doesn't appear on claude.ai</label>
+        <label class="opt"><input type="radio" name="reason" value="It gets in the way"><span class="dot"></span>It gets in the way</label>
+        <label class="opt"><input type="radio" name="reason" value="A feature is missing"><span class="dot"></span>A feature is missing</label>
+        <label class="opt"><input type="radio" name="reason" value="Something else"><span class="dot"></span>Something else</label>
+      </div>
+
+      <label class="q q2" for="details">Tell us more</label>
+      <textarea id="details" name="details" placeholder="Optional — what happened, or what you expected…"></textarea>
+
+      <label class="q q2" for="email">Email, if you'd like a reply</label>
+      <input class="field" id="email" type="email" name="email" placeholder="you@example.com">
+      <p class="hint">Optional. We'll only use it to reply to you.</p>
+
+      <button class="send" type="submit">Send feedback</button>
+    </form>
+
+    <div class="thanks">
+      <h2>Thank you. Every answer counts.</h2>
+      <p>If you left your email, we'll reply there.</p>
+    </div>
+
+    <p class="note">Prefer a conversation? <a href="https://github.com/anastasialekasova-hub/token-counter/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.</p>
+  </div>
+
+<script>
+  // Responses land in a Google Form (and its linked Google Sheet).
+  // Fill these in from the form's pre-filled link; empty = submit is a no-op
+  // that still shows the thank-you state.
+  var FORM_ID = '';
+  var ENTRY_REASON = '';
+  var ENTRY_DETAILS = '';
+  var ENTRY_EMAIL = '';
+
+  document.getElementById('feedback').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var reason = (document.querySelector('input[name="reason"]:checked') || {}).value || '';
+    var details = document.querySelector('textarea[name="details"]').value.trim();
+    var email = document.querySelector('input[name="email"]').value.trim();
+
+    if (FORM_ID && (reason || details || email)) {
+      var data = new FormData();
+      if (ENTRY_REASON && reason) data.append(ENTRY_REASON, reason);
+      if (ENTRY_DETAILS && details) data.append(ENTRY_DETAILS, details);
+      if (ENTRY_EMAIL && email) data.append(ENTRY_EMAIL, email);
+      fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse',
+        { method: 'POST', mode: 'no-cors', body: data }).catch(function () {});
+    }
+    document.body.dataset.sent = 'true';
+  });
+</script>
+</body>
+</html>
