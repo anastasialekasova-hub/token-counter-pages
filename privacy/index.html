@@ -40,7 +40,7 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 8, 2026</p>
+    <p class="updated">Last updated: September 24, 2026</p>
 
     <p>Token Counter is a browser extension that shows your Claude usage limits.
        This policy describes exactly what it does with data — which is very little.</p>
@@ -52,9 +52,11 @@
 
     <h2>What stays in your browser</h2>
     <p>The extension keeps a small amount of data in your browser's local extension storage
-       (<code>chrome.storage.local</code>): your settings (plan, whether the bar is shown) and a
-       short local log used only as a fallback estimate. This data never leaves your device and
-       is deleted automatically when you remove the extension.</p>
+       (<code>chrome.storage.local</code>): your settings (plan, whether the bar is shown), a
+       short local log used only as a fallback estimate, and the state of the rating prompt —
+       up to five dates on which you used the extension and whether you have answered or
+       dismissed the prompt. This data never leaves your device and is deleted automatically
+       when you remove the extension.</p>
 
     <h2>Network requests</h2>
     <p>The extension talks to exactly one site: <strong>claude.ai</strong>. It reads the same
@@ -68,14 +70,19 @@
       <li>After installation it opens a one-time <strong>welcome page</strong>, and after removal
           your browser opens a <strong>feedback page</strong> — both are ordinary web pages hosted
           on GitHub Pages. They may use standard, anonymous web analytics.</li>
-      <li>Feedback you choose to submit on the removal page (a reason and an optional comment)
-          is sent to the developer via Google Forms. Submitting it is entirely optional and it
-          contains only what you type — no identifiers are attached by the page.</li>
+      <li>If you click a star in the rating prompt, a new tab opens: the Chrome Web Store reviews
+          page for 4–5 stars, or a feedback page on GitHub Pages for 1–3 stars. The rating
+          itself is not sent anywhere.</li>
+      <li>Feedback you choose to submit on the removal page or on the feedback page (a reason,
+          an optional comment and, on the feedback page, an optional email address) is sent to
+          the developer via Google Forms. Submitting it is entirely optional and it contains only
+          what you type — no identifiers are attached by the page. An email address is used
+          only to reply to you.</li>
     </ul>
 
     <h2>Permissions, explained</h2>
     <ul>
-      <li><strong>storage</strong> — to remember your settings locally.</li>
+      <li><strong>storage</strong> — to remember your settings and the rating prompt state locally.</li>
       <li><strong>Access to claude.ai</strong> — to read your usage limits and show the bar
           under the chat. The extension runs only on claude.ai and nowhere else.</li>
     </ul>
