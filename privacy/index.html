@@ -40,7 +40,7 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 25, 2026</p>
+    <p class="updated">Last updated: October 8, 2026</p>
 
     <p>Token Counter is a browser extension that shows your Claude usage limits.
        This policy describes exactly what it does with data — which is very little.</p>
@@ -52,8 +52,9 @@
 
     <h2>What stays in your browser</h2>
     <p>The extension keeps a small amount of data in your browser's local extension storage
-       (<code>chrome.storage.local</code>): your settings (plan, whether the bar is shown), a
-       short local log used only as a fallback estimate, and the state of the rating prompt —
+       (<code>chrome.storage.local</code>): your settings (plan, whether the bar is shown, which
+       number the toolbar icon shows), the latest usage percentages and reset times read from
+       claude.ai, a short local log used only as a fallback estimate, and the state of the rating prompt —
        up to five dates on which you used the extension and whether you have answered or
        dismissed the prompt. This data never leaves your device and is deleted automatically
        when you remove the extension.</p>
@@ -61,9 +62,14 @@
     <h2>Network requests</h2>
     <p>The extension talks to exactly one site: <strong>claude.ai</strong>. It reads the same
        usage endpoint that Claude's own settings page uses, authenticated by your existing
-       claude.ai session, to display your official session and weekly limit percentages.
-       No request is ever sent to any other server, and nothing about you is transmitted
-       to the extension's developer.</p>
+       claude.ai session — through an open claude.ai tab when there is one, otherwise from its
+       background service worker — to show your official session and weekly limit percentages
+       on the toolbar icon, in its tooltip, in the popup and in the bar under the chat. It checks
+       about once a minute while your usage is changing and about every five minutes otherwise,
+       and also when you open the popup or a Claude reply finishes. The latest percentages and
+       reset times are kept only in your browser's local extension storage. No request is ever
+       sent to any other server, and nothing about you is transmitted to the extension's
+       developer.</p>
 
     <h2>Pages the extension opens</h2>
     <ul>
@@ -82,7 +88,9 @@
 
     <h2>Permissions, explained</h2>
     <ul>
-      <li><strong>storage</strong> — to remember your settings and the rating prompt state locally.</li>
+      <li><strong>storage</strong> — to remember your settings, the latest percentages and the rating prompt state locally.</li>
+      <li><strong>alarms</strong> — to wake the extension about once a minute so the percentages on
+          the toolbar icon stay current, and to show 0% exactly when a limit resets.</li>
       <li><strong>Access to claude.ai</strong> — to read your usage limits and show the bar
           under the chat. The extension runs only on claude.ai and nowhere else.</li>
     </ul>
