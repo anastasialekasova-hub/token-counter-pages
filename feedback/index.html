@@ -104,6 +104,9 @@
       <label class="q q2" for="details">Tell us more</label>
       <textarea id="details" name="details" placeholder="Optional — what happened, or what you expected…"></textarea>
 
+      <label class="q q2" for="popup-details">Details from the popup</label>
+      <textarea id="popup-details" name="popup-details" placeholder="Paste the details from the popup (optional)"></textarea>
+
       <label class="q q2" for="email">Email, if you'd like a reply</label>
       <input class="field" id="email" type="email" name="email" placeholder="you@example.com">
       <p class="hint">Optional. We'll only use it to reply to you.</p>
@@ -127,18 +130,21 @@
   var ENTRY_REASON = 'entry.1249526469';
   var ENTRY_DETAILS = 'entry.1536688108';
   var ENTRY_EMAIL = 'entry.2001398662';
+  var ENTRY_POPUP = 'entry.897730536'; // "Details from the popup": the JSON from the extension's "Copy details"
 
   document.getElementById('feedback').addEventListener('submit', function (e) {
     e.preventDefault();
     var reason = (document.querySelector('input[name="reason"]:checked') || {}).value || '';
     var details = document.querySelector('textarea[name="details"]').value.trim();
     var email = document.querySelector('input[name="email"]').value.trim();
+    var popup = document.querySelector('textarea[name="popup-details"]').value.trim();
 
-    if (FORM_ID && (reason || details || email)) {
+    if (FORM_ID && (reason || details || email || popup)) {
       var data = new FormData();
       if (ENTRY_REASON && reason) data.append(ENTRY_REASON, reason);
       if (ENTRY_DETAILS && details) data.append(ENTRY_DETAILS, details);
       if (ENTRY_EMAIL && email) data.append(ENTRY_EMAIL, email);
+      if (ENTRY_POPUP && popup) data.append(ENTRY_POPUP, popup);
       fetch('https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse',
         { method: 'POST', mode: 'no-cors', body: data }).catch(function () {});
     }
